@@ -1,0 +1,62 @@
+
+<mvc:View
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="tstazper.controller.Worklist"
+	height="100%"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+
+            		<VBox fitContainer="true">
+
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="AzperDevelopmentRequestSet" persistencyKey="SmartFilter_Explored">
+				<smartFilterBar:controlConfiguration>
+				
+		
+				</smartFilterBar:controlConfiguration>
+
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable id="devRequests" entitySet="AzperDevelopmentRequestSet" smartFilterId="smartFilterBar" tableType="ResponsiveTable" 
+             useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="false" 
+             header="Development requests" persistencyKey="SmartTableAnalytical_Explored" class="sapUiResponsiveContentPadding"
+             initiallyVisibleFields="Devcode,CustomerId,ProjectId,SapModule,DevreqName,Consultant,Duedate,Note,SpecUrl,TrelloCardId,DevreqStatus"
+             editTogglable="true" app:useSmartToggle="true" fieldChange="onFieldChange" >
+        <smartTable:customToolbar>
+			<OverflowToolbar design="Transparent">
+				<ToolbarSpacer/>
+				  <Button id="editButton" icon="sap-icon://edit" press="onEdit" text="Edit" enabled="false"/>
+                  <Button id="CreateButton" icon="sap-icon://add" press="handleCreation" text="Create"/>            
+
+			</OverflowToolbar>
+		</smartTable:customToolbar>
+			
+
+       <table:Table rows="{/AzperDevelopmentRequestSet}" id="innerTable"  selectionMode="Single" rowSelectionChange="onSelection" visibleRowCount="20">
+			<table:columns>
+				<table:Column width="9rem" visible="true" filtered="false" >
+                <Label text="ID"/>
+                 <table:template>
+                    <ObjectStatus text="{DevreqId}" state="{ path='DevreqId'}"/>
+                </table:template>
+                </table:Column>                
+			</table:columns>
+		</table:Table>
+
+
+        	<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+
+		    </smartTable:SmartTable>
+	
+
+    		</VBox>
+</mvc:View>
+
+			

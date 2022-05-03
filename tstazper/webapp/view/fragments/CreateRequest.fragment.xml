@@ -1,0 +1,146 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Dialog title=" Edit Development Request {SelectedObject>/Devcode}" draggable = "true" contentHeight="40%" contentWidth="40%"> 
+          	<f:Form editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanL="3"
+                    labelSpanXL="4"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+                        
+						       <f:FormElement label="Customer">
+							<f:fields>
+								<Input
+                                    id="CustomerIdSelect"
+                                    required="true"
+                                    placeholder="Enter Customer"
+                                    showSuggestion="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest=".onValueHelpRequest"
+                                    suggestionItems="{/AzperCustomerSet}"
+                                    suggestionItemSelected=".onSuggestionItemSelected">
+                                    <suggestionItems>
+                                        <core:ListItem
+                                            key="{CustomerId}"
+                                            text="{CustomerId} - {CustomerName}"
+                                            additionalText="{CustomerName}" />
+                                    </suggestionItems>
+                                </Input>
+							</f:fields>
+						</f:FormElement>
+                    
+                        <f:FormElement label="Project">
+							<f:fields>
+								<Input
+                                    id="ProjectIdSelect"
+                                    required="true"
+                                    placeholder="Enter Project"
+                                    showSuggestion="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest=".onValueHelpRequest"
+                                    suggestionItems="{/AzperProjectSet}"
+                                    suggestionItemSelected=".onSuggestionItemSelected">
+                                    <suggestionItems>
+                                        <core:ListItem
+                                            key="{ProjectId}"
+                                            text="{ProjectId} - {ProjectName}"
+                                            additionalText="{ProjectName}" />
+                                    </suggestionItems>
+                                </Input>
+							</f:fields>
+						</f:FormElement>
+
+                        <f:FormElement label="SAP Module">
+                            <f:fields>
+                                 	<Select id="SapModuleID" required="true" >
+                                    <core:Item key="B_I" text="B_I - Billing and Invoicing" />
+                                    <core:Item key="BC" text="BC - Basis" />
+                                    <core:Item key="BPC" text="BPC - Business Planning and Consolidation" />
+                                    <core:Item key="CO" text="CO - Controlling" />
+                                    <core:Item key="CRM" text="CRM - Customer Relationship Management" />
+                                    <core:Item key="CS" text="CS - Customer Service" />
+                                    <core:Item key="DM" text="DM - Device Management" />
+                                    <core:Item key="EDM" text="EDM - Energy Data Management" />
+                                    <core:Item key="FI-CA" text="FI-CA - Finance and Contract Accounts (FI-CA)" />
+                                    <core:Item key="FI" text="FI - Financial Accounting" />
+                                    <core:Item key="HR" text="HR - Human Resources (Human Capital Management)" />
+                                    <core:Item key="IDE" text="IDE - Inter-company Data Exchange" />
+                                    <core:Item key="IM" text="IM - Investment Management" />
+                                    <core:Item key="INT" text="INT - Intermodular" />
+                                    <core:Item key="LEGAL" text="LEGAL - Legal" />
+                                    <core:Item key="MM" text="MM - Materials Management" />
+                                    <core:Item key="PI" text="PI - Process Integration" />
+                                    <core:Item key="PM" text="PM - Plant Maintenance" />
+                                    <core:Item key="PP" text="PP - Production Planning" />
+                                    <core:Item key="REFX" text="REFX - Flexible Real Estate Management (RE-FX)" />
+                                    <core:Item key="RETAIL" text="RETAIL - Retail" />
+                                    <core:Item key="SD" text="SD - Sales and Distribution" />
+                                    <core:Item key="WP_PM" text="WP_PM - Work Management/Plant Maintenance" />
+
+                                </Select>
+                               
+                            </f:fields>
+                        </f:FormElement>
+
+                             <f:FormElement label="DevReqName">
+							<f:fields>
+								<Input  id="devNameID"  required="true" />
+							</f:fields>
+						</f:FormElement>
+
+                          <f:FormElement label="Due Date">
+							<f:fields>
+                             <DatePicker id="DueDateSelect" valueFormat="yyyy-MM-dd" displayFormat="long" required="true" />
+
+                                
+							</f:fields>
+						</f:FormElement>
+
+                        <f:FormElement label="Note">
+							<f:fields>
+								<Input id="DescriptionIdSelect" />
+							</f:fields>
+						</f:FormElement>
+
+                        <f:FormElement label="SpecURL">
+							<f:fields>
+								<Input id="SpecURLIdSelect" required="true" />
+							</f:fields>
+						</f:FormElement>
+
+                        <f:FormElement label="Status">
+							<f:fields>
+								<Select id="StatusID" required="true" >
+                                    <core:Item key="R" text="Ready for development" />
+                                    <core:Item key="S" text="Specification to be made" />
+                                </Select>
+							</f:fields>
+						</f:FormElement>				
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+        	<buttons>
+            <Button text="Cancel" press="onCancelCreate"/>
+            <Button text="Create Development Request" type="Emphasized" press="onCreate" />	
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

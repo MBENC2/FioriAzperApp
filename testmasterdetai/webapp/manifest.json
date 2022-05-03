@@ -1,0 +1,152 @@
+{
+  "_version": "1.22.0",
+  "sap.app": {
+    "id": "testmasterdetai",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap-ux/fiori-freestyle-writer:basic",
+      "version": "0.11.6"
+    },
+    "dataSources": {
+        "tableData_alias": {
+            "uri": "model/Object.json",
+            "type": "JSON"
+        }
+    
+    }
+    
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.78.12",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "testmasterdetai.i18n.i18n"
+        }
+      },
+     "mprod": {
+         "type": "sap.ui.model.json.JSONModel",
+         "uri": "model/Object.json"
+
+     }
+      
+      
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "testmasterdetai.view",
+        "controlAggregation": "pages",
+        "controlId": "idAppControl",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Master",
+          "pattern": "",
+          "target": [
+            "Master"
+          ]
+        }
+      ],
+      "targets": {
+        "Master": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Master",
+          "controlAggregation": "masterPages",
+		    "viewLevel": 0
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "testmasterdetai.view.View1",
+      "type": "XML",
+      "async": true,
+      "id": "View1"
+    }
+  },
+  "routes": [
+    {
+        "name": "Master",
+        "pattern": "",
+        "target": [
+            "Master"
+        ]
+    },
+    {
+        "name": "drinkDetails",
+        "pattern": "drinks/:drinkId:",
+        "target": [
+            "Master",
+            "drinkDetails"
+        ]
+    }
+],
+"targets": {
+    "master": {
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewName": "Master",
+        "controlAggregation": "masterPages",
+        "viewLevel": 0
+    },
+    "orderDetails": {
+        "viewName": "Detail1",
+        "controlAggregation": "detailPages",
+        "viewLevel": 1
+    }
+}
+}
